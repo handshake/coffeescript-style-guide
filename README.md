@@ -49,12 +49,12 @@ The details in this guide have been very heavily inspired by several existing st
 <a name="tabs_or_spaces"/>
 ### Tabs or Spaces?
 
-Use **spaces only**, with **2 spaces** per indentation level. Never mix tabs and spaces.
+Use **spaces only**, with **4 spaces** per indentation level. Never mix tabs and spaces.
 
 <a name="maximum_line_length"/>
 ### Maximum Line Length
 
-Limit all lines to a maximum of 79 characters.
+Limit all lines to a maximum of 100 characters.
 
 <a name="blank_lines"/>
 ### Blank Lines
@@ -73,7 +73,7 @@ Do not include trailing whitespace on any lines.
 <a name="optional_commas"/>
 ### Optional Commas
 
-Avoid the use of commas before newlines when properties or elements of an Object or Array are listed on separate lines.
+Avoid the use of commas before newlines when properties or elements of an Object or Array are listed on separate lines. Avoid using braces for object literals.
 
 ```coffeescript
 # Yes
@@ -92,9 +92,10 @@ foo = [
   'string',
   'values'
 ]
-bar:
+bar: {
   label: 'test',
   value: 87
+}
 ```
 
 <a name="encoding"/>
@@ -167,6 +168,13 @@ Additional recommendations:
            fooBar = 3
         ```
 
+- Always pad object literals with whitespace
+
+    ```coffeescript
+    { property: 'property' } # Yes
+    {property: 'property'} # No
+    ````
+
 <a name="comments"/>
 ## Comments
 
@@ -174,7 +182,14 @@ If modifying code that is described by an existing comment, update the comment s
 
 The first word of the comment should be capitalized, unless the first word is an identifier that begins with a lower-case letter.
 
+There should be one space of padding preceding the comment.
+
 If a comment is short, the period at the end can be omitted.
+
+```coffeescript
+    # Yes
+    #no
+```
 
 <a name="block_comments"/>
 ### Block Comments
@@ -287,7 +302,7 @@ print inspect value
 new Tag(new Value(a, b), new Arg(c))
 ```
 
-You will sometimes see parentheses used to group functions (instead of being used to group function parameters). Examples of using this style (hereafter referred to as the "function grouping style"):
+Avoid over-use of parentheses used to group functions (instead of being used to group function parameters). Examples of using this style (hereafter referred to as the "function grouping style"):
 
 ```coffeescript
 ($ '#selektor').addClass 'klass'
@@ -322,7 +337,11 @@ Use string interpolation instead of string concatenation:
 "this is an " + adjective + " string" # No
 ```
 
-Prefer single quoted strings (`''`) instead of double quoted (`""`) strings, unless features like string interpolation are being used for the given string.
+Use double quoted (`""`) strings.
+
+```coffeescript
+"this is a double quoted string" # Yes
+'this is a single quoted string" # No
 
 <a name="conditionals"/>
 ## Conditionals
@@ -402,14 +421,16 @@ Do not suppress exceptions.
 <a name="annotations"/>
 ## Annotations
 
-Use annotations when necessary to describe a specific action that must be taken against the indicated block of code.
+Use [JSDoc][jsdoc-tag-dictionary]/[Groc][groc-known-tags] Annotation Tags
 
-Write the annotation on the line immediately above the code that the annotation is describing.
+Use annotations to describe blocks of code and indicate that specific actions must be taken
 
-The annotation keyword should be followed by a colon and a space, and a descriptive note.
+Write the annotations on the line immediately above the code that the annotation is describing.
+
+The annotation keyword should be preceded by an @ symbol and followed by a space, and a descriptive note.
 
 ```coffeescript
-  # FIXME: The client's current state should *not* affect payload processing.
+  # @fixme The client's current state should *not* affect payload processing.
   resetClientState()
   processPayload()
 ```
@@ -417,18 +438,18 @@ The annotation keyword should be followed by a colon and a space, and a descript
 If multiple lines are required by the description, indent subsequent lines with two spaces:
 
 ```coffeescript
-  # TODO: Ensure that the value returned by this call falls within a certain
+  # @todo Ensure that the value returned by this call falls within a certain
   #   range, or throw an exception.
   analyze()
 ```
 
 Annotation types:
 
-- `TODO`: describe missing functionality that should be added at a later date
-- `FIXME`: describe broken code that must be fixed
-- `OPTIMIZE`: describe code that is inefficient and may become a bottleneck
-- `HACK`: describe the use of a questionable (or ingenious) coding practice
-- `REVIEW`: describe code that should be reviewed to confirm implementation
+- `@todo`: describe missing functionality that should be added at a later date
+- `@fixme`: describe broken code that must be fixed
+- `@optimize`: describe code that is inefficient and may become a bottleneck
+- `@hack`: describe the use of a questionable (or ingenious) coding practice
+- `@review`: describe code that should be reviewed to confirm implementation
 
 If a custom annotation is required, the annotation should be documented in the project's README.
 
@@ -481,6 +502,20 @@ console.log args... # Yes
 (a, b, c, rest...) -> # Yes
 ```
 
+Don't have large amounts of HTML in any Coffeescript code. Use a template instead.
+
+Avoid the use of **semi-colons** `;`:
+
+```coffeescript
+foo.bar() # Yes
+foo.bar(); # No
+```
+
+Minimize usage of fat arrows (`=>`) arrows and favor single arrows (`->`).
+
+Sometimes you really need to bind to a specific context/scope - 90% of the time you don’t. Fat arrows are twice as a slow as ingle quotes (even with V8’s native Function#bind).
+
+
 [coffeescript]: http://jashkenas.github.com/coffee-script/
 [coffeescript-issue-425]: https://github.com/jashkenas/coffee-script/issues/425
 [spine-js]: http://spinejs.com/
@@ -492,3 +527,5 @@ console.log args... # Yes
 [coffeescript-specific-style-guide]: http://awardwinningfjords.com/2011/05/13/coffeescript-specific-style-guide.html
 [coffeescript-faq]: https://github.com/jashkenas/coffee-script/wiki/FAQ
 [camel-case-variations]: http://en.wikipedia.org/wiki/CamelCase#Variations_and_synonyms
+[jsdoc-tag-dictionary]: http://usejsdoc.org/#tag-dictionary
+[groc-known-tags]: http://nevir.github.io/groc/doc_tags.html
