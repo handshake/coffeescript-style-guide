@@ -63,11 +63,11 @@
     "no_debugger": {
         "name": "no_debugger",
         "level": "warn"
-    }
+    },
     "no_empty_functions": {
         "name": "no_empty_functions",
         "level": "warn"
-    }
+    },
     "no_empty_param_list": {
         "name": "no_empty_param_list",
         "level": "ignore"
