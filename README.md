@@ -173,7 +173,7 @@ Additional recommendations:
     ```coffeescript
     { property: 'property' } # Yes
     {property: 'property'} # No
-    ````
+    ```
 
 <a name="comments"/>
 ## Comments
@@ -342,6 +342,7 @@ Use double quoted (`""`) strings.
 ```coffeescript
 "this is a double quoted string" # Yes
 'this is a single quoted string" # No
+```
 
 <a name="conditionals"/>
 ## Conditionals
@@ -421,7 +422,7 @@ Do not suppress exceptions.
 <a name="annotations"/>
 ## Annotations
 
-Use [JSDoc][jsdoc-tag-dictionary]/[Groc][groc-known-tags] Annotation Tags
+Use [JSDoc][jsdoc-tag-dictionary] / [Groc][groc-known-tags] Annotation Tags
 
 Use annotations to describe blocks of code and indicate that specific actions must be taken
 
