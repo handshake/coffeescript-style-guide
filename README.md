@@ -18,6 +18,8 @@ The details in this guide have been very heavily inspired by several existing st
 - Jeremy Ashkenas' [code review][spine-js-code-review] of [Spine][spine-js]
 - The [CoffeeScript FAQ][coffeescript-faq]
 
+[![Code Quality][xkcd_code_quality_img]][xkcd_code_quality_link]
+
 ## Table of Contents
 
 * [The CoffeeScript Style Guide](#guide)
@@ -530,3 +532,6 @@ Sometimes you really need to bind to a specific context/scope - 90% of the time 
 [camel-case-variations]: http://en.wikipedia.org/wiki/CamelCase#Variations_and_synonyms
 [jsdoc-tag-dictionary]: http://usejsdoc.org/#tag-dictionary
 [groc-known-tags]: http://nevir.github.io/groc/doc_tags.html
+
+[xkcd_code_quality_link]: http://xkcd.com/1513/
+[xkcd_code_quality_img]: http://imgs.xkcd.com/comics/code_quality.png "I honestly didn't think you could even USE emoji in variable names. Or that there were so many different crying ones."
